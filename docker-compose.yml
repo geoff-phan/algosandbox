@@ -49,6 +49,7 @@ services:
   indexer-db:
     image: "postgres:13-alpine"
     container_name: "algorand-sandbox-postgres"
+    hostname: postgresdb.server
     ports:
       - 5433:5432
     environment:
@@ -70,23 +71,24 @@ services:
     environment:
       DISABLED: "${ALGOSEARCH_DISABLED}"
     depends_on:
-      - search-db
+      #- search-db
+      - indexer-db
       - algod
       - indexer
 
-  search-db:
-    image: couchdb:2.3.1
-    container_name: "algorand-sandbox-couchdb"
-    hostname: couchdb.server
-    ports:
-      - "5984:5984"
-    # Optional
-    # volumes:
-    #   - ./db-data:/opt/couchdb/data
-    # extra_hosts:
-    #   - "dockerhost:$DOCKERHOST"
-    # https://github.com/apache/couchdb-docker/issues/54
-    # command: curl -u admin:password -X PUT 127.0.0.1:5984/_users && curl -u admin:password -X PUT 127.0.0.1:5984/test
-    environment:
-      - COUCHDB_USER=algorand
-      - COUCHDB_PASSWORD=algorand
+  #search-db:
+    #image: couchdb:2.3.1
+    #container_name: "algorand-sandbox-couchdb"
+    #hostname: couchdb.server
+    #ports:
+      #- "5984:5984"
+    ## Optional
+    ## volumes:
+    ##   - ./db-data:/opt/couchdb/data
+    ## extra_hosts:
+    ##   - "dockerhost:$DOCKERHOST"
+    ## https://github.com/apache/couchdb-docker/issues/54
+    ## command: curl -u admin:password -X PUT 127.0.0.1:5984/_users && curl -u admin:password -X PUT 127.0.0.1:5984/test
+    #environment:
+      #- COUCHDB_USER=algorand
+      #- COUCHDB_PASSWORD=algorand

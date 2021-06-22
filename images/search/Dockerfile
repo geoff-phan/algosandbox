@@ -2,8 +2,8 @@
 FROM node:14.4.0-alpine
 
 # Environment variables used by install.sh
-ARG URL=https://github.com/kevguy/algosearch
-ARG BRANCH=algod_v2
+ARG URL=https://github.com/geoff-phan/algosandboxsearch
+ARG BRANCH=""
 ARG SHA=""
 
 # set working directory
