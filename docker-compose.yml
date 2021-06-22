@@ -49,7 +49,6 @@ services:
   indexer-db:
     image: "postgres:13-alpine"
     container_name: "algorand-sandbox-postgres"
-    hostname: postgresdb.server
     ports:
       - 5433:5432
     environment:
