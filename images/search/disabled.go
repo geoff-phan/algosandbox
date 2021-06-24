@@ -13,7 +13,7 @@ func main() {
 	var code int
 	var message string
 
-	flag.IntVar(&port, "port", 8000, "port to start the server on.")
+	flag.IntVar(&port, "port", 8980, "port to start the server on.")
 	flag.IntVar(&code, "code", 400, "response code to use.")
 	flag.StringVar(&message, "message", "this is all that happens", "response message to display.")
 
