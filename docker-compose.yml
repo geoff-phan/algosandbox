@@ -69,8 +69,12 @@ services:
       - 8000:8000
     environment:
       DISABLED: "${ALGOSEARCH_DISABLED}"
+      PORT: "8980"
+      SNAPSHOT: ""
+      CONNECTION_STRING: "host=indexer-db port=5432 user=algorand password=algorand dbname=indexer_db sslmode=disable"
+      ALGOD_ADDR: "algod:4001"
+      ALGOD_TOKEN: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     depends_on:
-      #- search-db
       - indexer-db
       - algod
       - indexer
